@@ -19,8 +19,9 @@ router.get("/me", auth, async (req, res) => {
     }).populate("user", ["name", "avatar"]);
 
     if (!profile) {
-      res.status(400).json({ msg: "There is no profile for this user" });
+      return res.status(400).json({ msg: "There is no profile for this user" });
     }
+    res.json(profile.populate("user", ["name", "avatar"]));
   } catch {
     console.error(err.message);
     res.status(500).send("Server Error");
@@ -81,6 +82,7 @@ router.post(
 
     try {
       let profile = await Profile.findOne({ user: req.user.id });
+
       if (profile) {
         // Update
         let profile = await Profile.findOneAndUpdate(
@@ -93,7 +95,6 @@ router.post(
       // Create
       profile = new Profile(profileFields);
       await profile.save();
-
       // Send the response
       res.json(profile);
     } catch (err) {
