@@ -11,7 +11,7 @@ const AddExperience = props => {
     location: "",
     from: "",
     to: "",
-    current: "",
+    current: false,
     description: ""
   });
 

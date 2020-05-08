@@ -7,6 +7,7 @@ const auth = require("../../middleware/auth");
 const { check, validationResult } = require("express-validator");
 const Profile = require("../../models/Profile");
 const Users = require("../../models/Users");
+const Post = require("../../models/Post");
 
 // @route   GET api/profile/me
 // @desc    Get current users profile
@@ -131,7 +132,6 @@ router.get("/user/:user_id", async (req, res) => {
 
     res.json(profile);
   } catch (err) {
-    console.error(err.message);
     if (err.kind !== "ObjectId") {
       return res.status(400).json({ msg: "Profile Not Found " });
     }
@@ -145,6 +145,8 @@ router.get("/user/:user_id", async (req, res) => {
 
 router.delete("/", auth, async (req, res) => {
   try {
+    // users Post
+    await Post.deleteMany({ user: req.user.id });
     // Delete a profile
     await Profile.findOneAndRemove({ user: req.user.id });
 
@@ -197,7 +199,6 @@ router.put(
     try {
       const profile = await Profile.findOne({ user: req.user.id });
       profile.experience.unshift(newExp);
-
       await profile.save();
 
       res.json(profile);
@@ -244,6 +245,7 @@ router.put(
   ],
   async (req, res) => {
     const error = validationResult(req);
+
     if (!error.isEmpty()) {
       res.status(400).json({ error: error.array() });
     }
@@ -308,7 +310,6 @@ router.delete("/education/:edu_id", auth, async (req, res) => {
 
 router.get("/github/:username", (req, res) => {
   try {
-    console.log(req.params.username);
     const options = {
       uri: `https://api.github.com/users/${req.params.username}/repos?per_page=5
       &sort=created:asc&client_id=${config.get(

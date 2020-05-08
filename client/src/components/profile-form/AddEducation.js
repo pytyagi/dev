@@ -11,7 +11,7 @@ const AddEducation = props => {
     fieldofstudy: "",
     from: "",
     to: "",
-    current: "",
+    current: false,
     description: ""
   });
 
