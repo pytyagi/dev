@@ -39,9 +39,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     </ul>
   );
 
-  if (!isAuthenticated) {
-    return <Redirect to="/login"></Redirect>;
-  }
+  // if (!isAuthenticated) {
+  //   return <Redirect to="/login"></Redirect>;
+  // }
   return (
     <Fragment>
       <nav className="navbar bg-dark">

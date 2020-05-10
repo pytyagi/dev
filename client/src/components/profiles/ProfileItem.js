@@ -6,7 +6,7 @@ const ProfileItem = props => {
   const {
     profile: { user, status, company, location, skills }
   } = props;
-  console.log(user);
+
   const { name, avatar } = user;
   return (
     <div className="profile bg-light">
