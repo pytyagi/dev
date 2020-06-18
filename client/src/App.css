@@ -53,7 +53,7 @@ img {
 }
 
 .large {
-  font-size: 3rem;
+  font-size: 2rem;
   line-height: 1.2;
   margin-bottom: 1rem;
 }
@@ -159,13 +159,17 @@ img {
 }
 
 .btn-primary,
-.bg-primary,
 .badge-primary,
+.bg-primary,
 .alert-primary {
   background: var(--primary-color);
   color: #fff;
 }
-
+.bg-primary-post {
+  background: var(--primary-color);
+  color: #fff;
+  width: 70%;
+}
 .btn-light,
 .bg-light,
 .badge-light,
@@ -237,6 +241,14 @@ img {
 }
 
 /* Forms */
+.auth {
+  background-color: #080808;
+  color: #fff;
+  width: 500px;
+  margin: auto auto;
+  padding: 5px 20px 5px 20px;
+  border-radius: 15px;
+}
 .form .form-group {
   margin: 1.2rem 0;
 }
@@ -254,7 +266,7 @@ img {
 .form select,
 .form textarea {
   display: block;
-  width: 100%;
+  width: 70%;
   padding: 0.4rem;
   font-size: 1.2rem;
   border: 1px solid #ccc;
@@ -293,7 +305,7 @@ button {
 .table th,
 .table td {
   padding: 1rem;
-  text-align: left;
+  text-align: center;
 }
 
 .table th {
@@ -335,7 +347,7 @@ button {
 /* Landing Page */
 .landing {
   position: relative;
-  background: url("./img/showcase.jpg") no-repeat center center/cover;
+  background: url("./img/img1.jpg") no-repeat center center/cover;
   height: 100vh;
 }
 .landing-inner {
@@ -351,6 +363,12 @@ button {
 }
 
 /* Profiles Page */
+.bg-profile {
+  background-color: #080808;
+  color: #fff;
+  border-radius: 5px;
+}
+
 .profile {
   display: grid;
   grid-template-columns: 2fr 4fr 2fr;
@@ -358,6 +376,7 @@ button {
   grid-gap: 2rem;
   padding: 1rem;
   line-height: 1.8;
+  width: 100%;
   margin-bottom: 1rem;
 }
 
@@ -459,12 +478,16 @@ button {
   background: var(--primary-color);
   padding: 0.5rem;
 }
-
+.bg-post {
+  background-color: #080808;
+  color: #fff;
+}
 .post {
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-gap: 2rem;
   align-items: center;
+  width: 70%;
 }
 
 .post > div:first-child {

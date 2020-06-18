@@ -9,7 +9,7 @@ const ProfileItem = props => {
 
   const { name, avatar } = user;
   return (
-    <div className="profile bg-light">
+    <div className="profile bg-profile">
       <img src={avatar} alt="" className="round-img" />
       <div>
         <h2>{name} </h2>

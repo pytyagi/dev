@@ -26,7 +26,7 @@ const Profiles = props => {
               Browse and connect with developers
             </i>
           </p>
-          <div className="profiles">
+          <div>
             {profiles.length > 0 ? (
               profiles.map(profile => (
                 <ProfileItem key={profile._id} profile={profile}></ProfileItem>
