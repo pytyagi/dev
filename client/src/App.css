@@ -1,7 +1,7 @@
 /* Global Styles */
 :root {
   /* --primary-color: #17a2b8; */
-  --primary-color: #3ad178;
+  --primary-color: #48cae4;
   --dark-color: #343a40;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
@@ -18,7 +18,8 @@ body {
   font-family: "Raleway", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-color: #f4f3ee;
   color: #333;
 }
 
@@ -68,11 +69,18 @@ img {
 }
 
 .text-primary {
-  color: var(--primary-color);
+  /* color: var(--primary-color); */
 }
 
 .text-dark {
   color: var(--dark-color);
+}
+.skills{
+  display: flex;
+  
+}
+.skills-color{
+color: #7ae582;
 }
 
 /* Padding */
@@ -345,6 +353,7 @@ button {
 }
 
 /* Landing Page */
+
 .landing {
   position: relative;
   background: url("./img/img1.jpg") no-repeat center center/cover;
@@ -364,16 +373,17 @@ button {
 
 /* Profiles Page */
 .bg-profile {
-  background-color: #080808;
-  color: #fff;
-  border-radius: 5px;
+  background-color: rgb(255, 254, 254);
+  color: #413b3c;
+  border-radius: 12px;
+  box-shadow: 5px 5px grey;
 }
 
 .profile {
   display: grid;
-  grid-template-columns: 2fr 4fr 2fr;
+  grid-template-columns: 0fr 2fr 1fr;
   align-items: center;
-  grid-gap: 2rem;
+  grid-gap: 1rem;
   padding: 1rem;
   line-height: 1.8;
   width: 100%;
@@ -479,8 +489,11 @@ button {
   padding: 0.5rem;
 }
 .bg-post {
-  background-color: #080808;
-  color: #fff;
+  background-color: rgb(255, 254, 254);
+ color: #413b3c;
+ border-radius: 12px;
+  box-shadow: 5px 5px grey;
+
 }
 .post {
   display: grid;
@@ -512,6 +525,10 @@ button {
   margin-bottom: 0.5rem;
 }
 
+.post-actions{
+  display: flex;
+  align-items: center;
+}
 /* Mobile Styles */
 @media (max-width: 700px) {
   .container {
