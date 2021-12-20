@@ -148,7 +148,7 @@ function Login(props) {
                         id="email"
                         label="Email Address"
                         name="email"
-                        autoComplete="email"
+                        autoComplete="new-email"
                         required={true}
                         value={email}
                         onChange={onChange}
@@ -163,7 +163,7 @@ function Login(props) {
                         label="Password"
                         type="password"
                         id="password"
-                        autoComplete="current-password"
+                        autoComplete="new-password"
                         required={true}
                         value={password}
                         onChange={onChange}
@@ -178,7 +178,7 @@ function Login(props) {
                     </Button>
                     <Grid container>
                         <Grid item>
-                            <Link href="/register" >
+                            <Link href="/register">
                                 {"Don't have an account? Sign Up"}
                             </Link>
                         </Grid>
