@@ -22,6 +22,7 @@ router.get("/me", auth, async (req, res) => {
     if (!profile) {
       return res.status(400).json({ msg: "There is no profile for this user" });
     }
+    console.log("GET api/profile/me");
     res.json(profile.populate("user", ["name", "avatar"]));
   } catch {
     console.error(err.message);
@@ -97,6 +98,7 @@ router.post(
       profile = new Profile(profileFields);
       await profile.save();
       // Send the response
+       console.log("POST api/profile");
       res.json(profile);
     } catch (err) {
       console.error(err.message);
@@ -112,6 +114,7 @@ router.post(
 router.get("/", async (req, res) => {
   try {
     const profiles = await Profile.find().populate("user", ["name", "avatar"]);
+    console.log(" GET api/profile");
     res.json(profiles);
   } catch (err) {
     console.error(err.message);
@@ -128,7 +131,10 @@ router.get("/user/:user_id", async (req, res) => {
     const profile = await Profile.findOne({
       user: req.params.user_id
     }).populate("user", ["name", "avatar"]);
-    if (!profile) return res.status(400).json({ msg: "Profile Not Found" });
+    if (!profile) {
+      console.log("GET api/profile/user/:user_id");
+      return res.status(400).json({ msg: "Profile Not Found" });
+    } 
 
     res.json(profile);
   } catch (err) {
@@ -152,7 +158,7 @@ router.delete("/", auth, async (req, res) => {
 
     // Delate a user
     await Users.findOneAndRemove({ _id: req.user.id });
-
+     console.log("DELETE api/profile");
     res.json({ msg: "User Deleted Successfully" });
   } catch (err) {
     console.error(err.message);
@@ -200,7 +206,7 @@ router.put(
       const profile = await Profile.findOne({ user: req.user.id });
       profile.experience.unshift(newExp);
       await profile.save();
-
+      console.log("PUT api/profile/experience");
       res.json(profile);
     } catch (err) {
       console.error(err.message);
@@ -223,7 +229,7 @@ router.delete("/experience/:exp_id", auth, async (req, res) => {
 
     profile.experience.splice(removeIndex, 1);
     await profile.save();
-
+    console.log("DELETE api/profile/experience/:exp_id");
     res.json(profile);
   } catch (err) {
     console.error(err.message);
@@ -273,7 +279,7 @@ router.put(
       profile.education.unshift(newEdu);
 
       await profile.save();
-
+       console.log("PUT api/profile/education");
       res.json(profile);
     } catch (err) {
       console.error(err.message);
@@ -296,7 +302,7 @@ router.delete("/education/:edu_id", auth, async (req, res) => {
 
     profile.education.splice(removeIndex, 1);
     await profile.save();
-
+     console.log("DELETE api/profile/education/:edu_id");
     res.json(profile);
   } catch (err) {
     console.error(err.message);
@@ -325,6 +331,7 @@ router.get("/github/:username", (req, res) => {
       if (response.statusCode != 200) {
         return res.status(404).json({ msg: "No github profile found" });
       }
+      console.log("GET api/profile/github/:username");
       res.json(JSON.parse(body));
     });
   } catch (err) {

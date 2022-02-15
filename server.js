@@ -8,9 +8,11 @@ connectDB();
 
 app.use(express.json({ extended: false }));
 app.get("/", (req, res) => {
+   console.log("/ dashboard route");
   if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
     app.get('*', (req, res) => {
+     console.log("/ Prod dashboard route");
       res.sendFile(path.resolve(__dirname,'client','build','index.html'))
     })
   }

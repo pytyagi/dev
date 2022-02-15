@@ -31,6 +31,7 @@ router.post(
       });
 
       const post = await newPost.save();
+      console.log("POST api/posts route");
       res.json(post);
     } catch (err) {
       console.error(err.message);
@@ -46,6 +47,7 @@ router.post(
 router.get("/", auth, async (req, res) => {
   try {
     const posts = await Post.find().sort({ date: -1 });
+     console.log("GETALL api/posts route");
     res.json(posts);
   } catch (err) {
     console.error(err.message);
@@ -63,6 +65,7 @@ router.get("/:id", auth, async (req, res) => {
     if (!post) {
       return res.status(404).json({ msg: "Post Not Found" });
     }
+    console.log("GET api/posts/:id route");
     res.json(post);
   } catch (err) {
     console.error(err.message);
@@ -90,7 +93,7 @@ router.delete("/:id", auth, async (req, res) => {
     }
 
     await post.remove();
-
+     console.log("DEL api/posts/:id route");
     res.json({ msg: "Post Deleted Successfully" });
   } catch (err) {
     console.error(err.message);
@@ -117,6 +120,7 @@ router.put("/like/:id", auth, async (req, res) => {
 
     post.likes.unshift({ user: req.user.id });
     await post.save();
+     console.log("PUT api/posts/:id route");
     res.json(post.likes);
   } catch (err) {
     console.error(err.message);
@@ -146,6 +150,7 @@ router.put("/unlike/:id", auth, async (req, res) => {
     post.likes.splice(removeIndex, 1);
 
     await post.save();
+     console.log("PUT api/posts/:id route");
     res.json(post.likes);
   } catch (err) {
     console.error(err.message);
@@ -180,7 +185,7 @@ router.post(
       post.comments.unshift(newComment);
 
       await post.save();
-
+       console.log(" POST api/posts/comment/:id");
       res.json(post.comments);
     } catch (err) {
       console.error(err.message);
@@ -220,6 +225,7 @@ router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
     post.comments.splice(removeIndex, 1);
 
     await post.save();
+      console.log("DELETE api/posts/comment/:id/:comment_id");
     res.json(post.comments);
   } catch (err) {
     console.error(err.message);
