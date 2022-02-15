@@ -19,5 +19,3 @@ const connectDB = async () => {
 };
 
 module.exports = connectDB;
-
-// "mongoURI": "mongodb+srv://piyush123:piyush123@devconnector-aaewr.mongodb.net/test?retryWrites=true&w=majority",
